@@ -1,9 +1,47 @@
 # GxEPD2
+## Licenses and modifications
+Note. This library is created by [Jean-Marc Zingg](https://github.com/ZinggJM). The original work is distributed under the GPL-3.0. Modifications and additions to this specific branch are made by [Johan Åtland Førsvoll](https://github.com/Bliph) of [IOT Solutions AS](https://github.com/IOTSolutionsAS)
+
+### License exception
+The current fork is a redistributed with an license exception:
+
+> _IOT Solutions AS is granted an exception to the GPL 3.0 license of my library GxEPD2 to use that library under the terms of the license LGPLv3.0 for any project that needs this exception. <br>
+Signed Meggen, Switzerland, 28. January 2021, by Jean-Marc Zingg_
+
+* The original library is published under [GPL-3.0](LICENSE)
+* The exception (quoted above) applies tho this fork and is published under [LGPL-3.0](COPYING.LESSER)
+
+Both licenses are included in this code repository
+
+### Modifications
+Original library: https://github.com/ZinggJM/GxEPD2
+
+This library fork, branch and modification is based on the original version [2.13](https://github.com/ZinggJM/GxEPD2/releases/tag/1.2.13). The only _modification_ is done to this file (README.MD) and the [license file](LICENSE). There are some additions, however. The purpose of the modification is added support for panel type GDEM029C90 from GoodDisplay and the possibility to use an external SPI-driver. The GDEM029C90 panel is a 2.9" b/w/y and basically the same as GDEW029Z10, but with a different controller chip.
+
+The external SPI-driver can be of any type based on the SPIClass of the Arduino Core for [ESP32](https://github.com/espressif/arduino-esp32/blob/master/libraries/SPI/src/SPI.h) and [ESP8266](https://github.com/esp8266/Arduino/blob/master/libraries/SPI/SPI.h). It is also possible to use software driver (bit banging)[https://en.wikipedia.org/wiki/Bit_banging] libraries like Majenko Technologies [SoftSPI](https://github.com/MajenkoLibraries/SoftSPI).
+
+* The logic is based on Demo Example from Good Display, available here: http://www.e-paper-display.com/download_detail/downloadsId=806.html
+* The panel type GDEM029C90 uses a controller type SSD1680 http://www.e-paper-display.com/download_detail/downloadsId=960.html
+
+### File details
+This is a list of all the new, modified and added files.
+File | State | Description
+--|--|--
+[README.md](README.md) | Mod | This file, with addition about license exception and description of modifications to the library
+[LICENSE](LICENSE) | Mod | Added exception on top of original GPL-3.0 license text
+[COPYING.LESSER](COPYING.LESSER) | New | LGPL-3.0 added as an exception
+[/src/GxEPD2_EPD_bb.cpp](https://github.com/IOTSolutionsAS/GxEPD2/blob/1.2.13_GDEM029C90_SSD1680/src/GxEPD2_EPD_bb.cpp) | Add | New base class with external SPI-driver reference. Class based on GxEPD2_EPD
+[/src/GxEPD2_EPD_bb.h](https://github.com/IOTSolutionsAS/GxEPD2/blob/1.2.13_GDEM029C90_SSD1680/src/GxEPD2_EPD_bb.h) | Add | New base class with external SPI-driver reference. Class based on GxEPD2_EPD
+[/src/epd3c/GxEPD2_290c_C90_bb.cpp](https://github.com/IOTSolutionsAS/GxEPD2/blob/1.2.13_GDEM029C90_SSD1680/src/epd3c/GxEPD2_290c_C90_bb.cpp) | New | New panel driver for GDEM029C90 with external SPI
+[/src/epd3c/GxEPD2_290c_C90_bb.h](https://github.com/IOTSolutionsAS/GxEPD2/blob/1.2.13_GDEM029C90_SSD1680/src/epd3c/GxEPD2_290c_C90_bb.h) | New | New panel driver for GDEM029C90 with external SPI
+[/src/epd3c/GxEPD2_290c_bb.cpp](https://github.com/IOTSolutionsAS/GxEPD2/blob/1.2.13_GDEM029C90_SSD1680/src/epd3c/GxEPD2_290c_bb.cpp) | Add | New panel driver for GDEW029Z10 with external SPI
+[/src/epd3c/GxEPD2_290c_bb.h](https://github.com/IOTSolutionsAS/GxEPD2/blob/1.2.13_GDEM029C90_SSD1680/src/epd3c/GxEPD2_290c_bb.h) | Add | New panel driver for GDEW029Z10 with external SPI
+
 ## Arduino Display Library for SPI E-Paper Displays
 
 - With full Graphics and Text support using Adafruit_GFX
 
-- For SPI e-paper displays from Dalian Good Display 
+- For SPI e-paper displays from Dalian Good Display
 - and SPI e-paper boards from Waveshare
 
 ### important note :
@@ -45,7 +83,7 @@
 - GxEPD2 uses Adafruit_GFX for Graphics and Text support, which is well documented there
 - GxEPD2 uses meaningful method names, and has some comments in the header files
 - consult the header files GxEPD2_BW.h, GxEPD2_3C.h and GxEPD2_GFX.h
-- for the concept of paged drawing and picture loop see: 
+- for the concept of paged drawing and picture loop see:
 - https://github.com/olikraus/u8glib/wiki/tpictureloop
 
 ### Supported SPI e-paper panels from Good Display:
@@ -154,7 +192,7 @@
 - GDEW075T7 has differential update (1.6s) using a charge balancing waveform
 - added optional SW SPI support, see /extras/sw_spi/README
 - added /extras/tests/GxEPD2_RefreshTests/GxEPD2_RefreshTests.ino, for waveform tuning
-- minor fixes 
+- minor fixes
 - note that 7.5" e-paper displays don't work reliable if fed from 3.3V Arduino pin
 #### Version 1.2.0
 - added "fast partial update" (differential update) for GDEW0371W7 3.7" b/w 240x416
@@ -172,7 +210,7 @@
 - GDEW075Z08 does allow (slow) partial update, set usePartialUpdate = false to disable for better image
 - changed 4.2" b/w waveform table, for better result with actual panels
 #### Version 1.1.9
-- note for ESP8266 when using SS for CS: (wiring suggestion) 
+- note for ESP8266 when using SS for CS: (wiring suggestion)
 - connect 4.7k pull-down from GPIO15 to GND if your board or shield has level converters
 - fixes for large displays (use uint16_t for buffer index)
 #### Version 1.1.8
@@ -230,7 +268,7 @@
 - add GxEPD2_SD_AVR_boards_added.h to GxEPD2_SD_AVR_Example
 - with example definitions for non-AVR boards (low level display class use example)
 #### Version 1.0.7
-- add GxEPD2_boards_added.h to GxEPD2_Example 
+- add GxEPD2_boards_added.h to GxEPD2_Example
 - with example definitions for Arduino DUE and MKR1000
 #### Version 1.0.6
 - add buffered drawing option to GxEPD2_WiFi_Example
