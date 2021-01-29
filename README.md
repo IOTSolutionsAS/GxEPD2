@@ -29,7 +29,7 @@ File | State | Description
 :--|:--|:--
 [README.md](README.md) | Mod | This file, with addition about license exception and description of modifications to the library
 [LICENSE](LICENSE) | Mod | Added exception on top of original GPL-3.0 license text
-[COPYING.LESSER](COPYING.LESSER) | New | LGPL-3.0 added as an exception
+[COPYING.LESSER.md](COPYING.LESSER.md) | New | LGPL-3.0 added as an exception
 [/src/GxEPD2_EPD_bb.cpp](https://github.com/IOTSolutionsAS/GxEPD2/blob/1.2.13_GDEM029C90_SSD1680/src/GxEPD2_EPD_bb.cpp) | Add | New base class with external SPI-driver reference. Class based on GxEPD2_EPD
 [/src/GxEPD2_EPD_bb.h](https://github.com/IOTSolutionsAS/GxEPD2/blob/1.2.13_GDEM029C90_SSD1680/src/GxEPD2_EPD_bb.h) | Add | New base class with external SPI-driver reference. Class based on GxEPD2_EPD
 [/src/epd3c/GxEPD2_290c_C90_bb.cpp](https://github.com/IOTSolutionsAS/GxEPD2/blob/1.2.13_GDEM029C90_SSD1680/src/epd3c/GxEPD2_290c_C90_bb.cpp) | New | New panel driver for GDEM029C90 with external SPI
