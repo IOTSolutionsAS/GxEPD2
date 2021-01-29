@@ -26,7 +26,7 @@ The external SPI-driver can be of any type based on the SPIClass of the Arduino 
 ### File details
 This is a list of all the new, modified and added files.
 File | State | Description
---|--|--
+:--|:--|:--
 [README.md](README.md) | Mod | This file, with addition about license exception and description of modifications to the library
 [LICENSE](LICENSE) | Mod | Added exception on top of original GPL-3.0 license text
 [COPYING.LESSER](COPYING.LESSER) | New | LGPL-3.0 added as an exception
